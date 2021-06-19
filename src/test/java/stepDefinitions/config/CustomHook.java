@@ -16,6 +16,11 @@ public class CustomHook {
 
   @Before
   public void beforeEachScenario(Scenario scenario) {
+    System.out.println();
+    System.out.println("============================================================");
+    LOGGER.warn(String.format("** AUTOMATION TEST ***"));
+    System.out.println("============================================================");
+    System.out.println();
     String scenarioName = scenario.getName();
     LOGGER.info(String.format("Starting test: %s", scenarioName));
     softly = new SoftAssertions();
@@ -26,5 +31,10 @@ public class CustomHook {
   public void afterEachScenario() {
     DriverFactory.dismissInstances();
     softly.assertAll();
+    System.out.println();
+    System.out.println("============================================================");
+    LOGGER.warn(String.format("** DONE TEST ***"));
+    System.out.println("============================================================");
+    System.out.println();
   }
 }
