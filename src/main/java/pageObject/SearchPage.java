@@ -1,10 +1,15 @@
 package pageObject;
 
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.support.FindBy;
+import utils.common.TextUtils;
 import utils.element.Element;
 
 public class SearchPage {
+
+  public final static Logger LOGGER = LogManager.getLogger(SearchPage.class);
 
   @FindBy(id = "search_str")
   public static Element Search_Result_Input;
@@ -17,16 +22,19 @@ public class SearchPage {
 
   public static String getSearchResult() {
     String result = Search_Result_Input.getAttribute("value");
+    LOGGER.info(String.format("Get Search Result: %s", result));
     return result;
   }
 
   public static String getAlertMessage() {
     String result = Not_Found_Alert.getText();
-    return result;
+    LOGGER.info(String.format("Get Alert Message: %s", result));
+    return  TextUtils.removeSpecialCharacters(result);
   }
 
   public static Integer getResultItems() {
     Integer result = Search_Result_Items.size();
+    LOGGER.info(String.format("Get Number of Search Items Returned: %s", result));
     return result;
   }
 }

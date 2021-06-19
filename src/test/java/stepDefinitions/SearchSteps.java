@@ -9,7 +9,6 @@ import pageObject.SearchPage;
 
 import utils.ScenarioContext;
 import org.assertj.core.api.SoftAssertions;
-import utils.common.TextUtils;
 
 public class SearchSteps {
 
@@ -34,9 +33,8 @@ public class SearchSteps {
 
   @And("I see the search result not display data")
   public void iSeeTheSearchResultNotDisplayData() {
-    String alertMessage = TextUtils.removeSpecialCharacters(SearchPage.getAlertMessage());
     SoftAssertions softly = ScenarioContext.currentContext().get("Assertion", SoftAssertions.class);
-    softly.assertThat(alertMessage).as("The alert message").containsIgnoringCase("Not Found");
+    softly.assertThat(SearchPage.getAlertMessage()).as("The alert message").containsIgnoringCase("Not Found");
     softly.assertThat(SearchPage.getSearchResult())
         .as("The search result")
         .isEqualTo(ScenarioContext.currentContext().get("Search data"));

@@ -14,12 +14,12 @@ public class Header extends BasePage {
   public static Element Search_City_Input;
 
   public static void inputSearchKeyword(String keyword) {
-    LOGGER.info(String.format("Input search keyword: %s", keyword));
     Search_City_Input.sendKeys(keyword);
+    LOGGER.info(String.format("Input search keyword: %s", keyword));
   }
 
   public static void submitSearchForm() {
-    LOGGER.info("Submit the search form");
     Search_City_Input.sendKeys(Keys.ENTER);
+    LOGGER.info("Submit the search form");
   }
 }

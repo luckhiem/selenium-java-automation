@@ -88,7 +88,6 @@
                         </goals>
                         <configuration>
                             <projectName>Automation Test</projectName>
-                            <skip>false</skip>
                             <outputDirectory>${project.build.directory}</outputDirectory>
                             <inputDirectory>${project.build.directory}/jsonReports</inputDirectory>
                             <setSkippedAsNotFailing>true</setSkippedAsNotFailing>
