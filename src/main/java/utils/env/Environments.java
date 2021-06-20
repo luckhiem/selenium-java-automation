@@ -14,4 +14,7 @@ public interface Environments extends Config {
 
   @Key("TEST_URL")
   String TEST_URL();
+
+  @Key("REMOTE_URL")
+  String REMOTE_URL();
 }

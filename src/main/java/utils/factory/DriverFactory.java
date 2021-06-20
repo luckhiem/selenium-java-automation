@@ -15,6 +15,7 @@ import utils.element.factory.ElementFactory;
 
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
+import utils.env.Config;
 
 import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 
@@ -49,8 +50,7 @@ public class DriverFactory {
         break;
       case "REMOTE":
         DesiredCapabilities capabilities = PredefineCap.getDesiredCapabilities();
-        webDriver = new RemoteWebDriver(new URL("http:localhost:4444/wd/hub"),
-            capabilities);
+        webDriver = new RemoteWebDriver(new URL(Config.ENV.REMOTE_URL()), capabilities);
         webDriver.manage().timeouts().implicitlyWait(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         webDriver.manage().timeouts().pageLoadTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         webDriver.manage().timeouts().setScriptTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
