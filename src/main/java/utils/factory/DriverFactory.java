@@ -20,13 +20,6 @@ import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 
 public class DriverFactory {
 
-  public static HashMap<String, DesiredCapabilities> capabilitiesHashmap = new HashMap<String, DesiredCapabilities>() {
-    {
-      put("SELENIUM_GRID", PredefineCap.SELENIUM_GRID);
-      put("LOCAL", PredefineCap.LOCAL);
-    }
-  };
-
   private static WebDriver webDriver = null;
   private static int DEFAULT_TIMEOUT = 60;
   public static boolean isWebDriverRun = false;
@@ -46,6 +39,8 @@ public class DriverFactory {
     }
     ChromeOptions options = new ChromeOptions();
     String location = System.getenv("env");
+    String browser = System.getenv("browser");
+    System.out.println(browser);
     switch (location.toUpperCase()) {
       case "LOCAL":
         options.setPageLoadStrategy(PageLoadStrategy.NONE);
@@ -55,8 +50,7 @@ public class DriverFactory {
         webDriver.manage().timeouts().setScriptTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         break;
       case "REMOTE":
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", "firefox");
+        DesiredCapabilities capabilities = PredefineCap.REMOTE;
         webDriver = new RemoteWebDriver(new URL("http:localhost:4444/wd/hub"),
             capabilities);
         webDriver.manage().timeouts().implicitlyWait(DEFAULT_TIMEOUT, TimeUnit.SECONDS);

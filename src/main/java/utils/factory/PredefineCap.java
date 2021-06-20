@@ -4,15 +4,26 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class PredefineCap {
 
-  public static final DesiredCapabilities LOCAL = new DesiredCapabilities() {
-    {
-      setBrowserName("Chrome");
+  private static String switchBrowser() {
+    String browser = System.getenv("browser");
+    String result;
+    switch (browser.toUpperCase()) {
+      case "FIREFOX":
+        result = "firefox";
+        break;
+      case "EDGE":
+        result = "edge";
+        break;
+      default:
+        result = "chrome";
+        break;
     }
-  };
+    return result;
+  }
 
-  public static final DesiredCapabilities SELENIUM_GRID = new DesiredCapabilities() {
+  public static DesiredCapabilities REMOTE = new DesiredCapabilities() {
     {
-      setCapability("browser", "Firefox");
+      setBrowserName(switchBrowser());
     }
   };
 }

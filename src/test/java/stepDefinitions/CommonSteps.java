@@ -1,7 +1,7 @@
 package stepDefinitions;
 
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import pageObject.BasePage;
 import utils.factory.DriverFactory;
 
@@ -15,7 +15,7 @@ public class CommonSteps {
     DriverFactory.initPages("pageObject", DriverFactory.getWebDriver());
   }
 
-  @Then("I go to the Open Weather Map")
+  @When("I go to the Open Weather Map")
   public void iGoToTheOpenWeatherMap() {
     new BasePage().gotoOpenWeatherMapPage();
   }

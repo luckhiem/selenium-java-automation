@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +22,7 @@ public class SearchSteps {
     Header.submitSearchForm();
   }
 
-  @And("I see the search result display correctly")
+  @Then("I see the search result display correctly")
   public void theSearchResultWillDisplay() {
     SoftAssertions softly = ScenarioContext.currentContext().get("Assertion", SoftAssertions.class);
     softly.assertThat(SearchPage.getResultItems()).as("The number items").isGreaterThan(0);
@@ -31,7 +32,7 @@ public class SearchSteps {
     LOGGER.info("Verify the search result display correctly");
   }
 
-  @And("I see the search result not display data")
+  @Then("I see the search result not display data")
   public void iSeeTheSearchResultNotDisplayData() {
     SoftAssertions softly = ScenarioContext.currentContext().get("Assertion", SoftAssertions.class);
     softly.assertThat(SearchPage.getAlertMessage()).as("The alert message").containsIgnoringCase("Not Found");
