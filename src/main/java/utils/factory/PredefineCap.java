@@ -1,5 +1,8 @@
 package utils.factory;
 
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class PredefineCap {
@@ -23,19 +26,19 @@ public class PredefineCap {
 
   public static DesiredCapabilities CHROME = new DesiredCapabilities() {
     {
-      setBrowserName("chrome");
+      setBrowserName(new ChromeOptions().getBrowserName());
     }
   };
 
   public static DesiredCapabilities FIREFOX = new DesiredCapabilities() {
     {
-      setBrowserName("firefox");
+      setBrowserName(new FirefoxOptions().getBrowserName());
     }
   };
 
   public static DesiredCapabilities EDGE = new DesiredCapabilities() {
     {
-      setBrowserName("edge");
+      setBrowserName(new EdgeOptions().getBrowserName());
     }
   };
 }
