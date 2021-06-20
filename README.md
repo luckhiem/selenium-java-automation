@@ -27,7 +27,7 @@ $ git clone https://github.com/luckhiem/vdc-automation.git
 ```
 
 ### Running
-
+#### Local
 **For Cucumber Test**
 ```sh
 $ mvn clean -Dtest="RunCucumberTest" test -Denv=[environment] "-Dcucumber.options=--tags \"[tagName]\"" 
@@ -43,6 +43,21 @@ $ mvn clean verify -Dtest="RunCucumberTest" -Denv=local -Dcucumber.options="--ta
 | Variable Name | Meaning                                                        | Available Options               |
 |---------------|----------------------------------------------------------------|--------------------------       |
 | env           | The environment that test will be run                          | local, remote                   |
+
+#### Multiple browser
+The framework using [Selenium Grid] run inside docker, to running with multiple browser, please follow steps below:
+1. Start Selenium Grid in docker
+```sh
+$ docker compose -f ./docker-compose.yml up -d
+```
+2. Run test by input the browser that want to test (Available: `chrome`, `firefox`, `edge`)
+```sh
+$ mvn clean verify -Dtest="TestRunner" -Denv=remote -Dbrowser=firefox -Dcucumber.options="--tags @test" test
+```
+3. After finish run test, stop the Selenium Grid
+```sh
+$ docker compose -f ./docker-compose.yml down
+```
 
 ### Structure
 **MAIN**
@@ -143,21 +158,6 @@ The main report is file `overview-steps.html`
 *Example:* Run this command to execute all scenarios which have tag "@regression" and generate the test report:
 ```
 clean verify -Denv=dev "-Dcucumber.options=--tags \"@test\""
-```
-
-### Multiple browser
-The framework using [Selenium Grid] run inside docker, to running with multiple browser, please follow steps below:
-1. Start Selenium Grid in docker
-```sh
-$ docker compose -f ./docker-compose.yml up -d
-```
-2. Run test by input the browser that want to test (Available: `chrome`, `firefox`, `edge`)
-```sh
-$ mvn clean verify -Dtest="TestRunner" -Denv=remote -Dbrowser=firefox -Dcucumber.options="--tags @test" test
-```
-3. After finish run test, stop the Selenium Grid
-```sh
-$ docker compose -f ./docker-compose.yml down
 ```
 
 
