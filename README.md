@@ -125,7 +125,7 @@ assertThat(SearchPage.getAlertMessage).isEqualTo(AlertMessage);
 ```
 
 In some concrete cases, using `Soft Assertions` to collects all assertion errors instead of stopping at the first one.
-The instance of `Soft Assertion` always created in before step of each scenario (Please check `test.java.step_defs.CustomHook`) and stored by `Scenario.currentContext()`. Just call it:
+The instance of `Soft Assertion` always created in before step of each scenario (Please check `test.java.stepDefinitions.config.CustomHook`) and stored by `Scenario.currentContext()`. Just call it:
 ```
 SoftAssertions softly = currentContext().get("Assertion", SoftAssertions.class);
 softly.assertThat(...)
@@ -142,11 +142,11 @@ Use lifecycle `verify` instead of `test` to generate test report in directory `t
 The main report is file `overview-steps.html`
 *Example:* Run this command to execute all scenarios which have tag "@regression" and generate the test report:
 ```
-clean verify -Denv=dev "-Dcucumber.options=--tags \"@regression\""
+clean verify -Denv=dev "-Dcucumber.options=--tags \"@test\""
 ```
 
 ### Multiple browser
-The framework using [Selenium Grid] run inside docker, to running in 
+The framework using [Selenium Grid] run inside docker, to running with multiple browser 
 
 
 

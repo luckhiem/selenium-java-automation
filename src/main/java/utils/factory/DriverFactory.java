@@ -39,8 +39,6 @@ public class DriverFactory {
     }
     ChromeOptions options = new ChromeOptions();
     String location = System.getenv("env");
-    String browser = System.getenv("browser");
-    System.out.println(browser);
     switch (location.toUpperCase()) {
       case "LOCAL":
         options.setPageLoadStrategy(PageLoadStrategy.NONE);
@@ -50,7 +48,7 @@ public class DriverFactory {
         webDriver.manage().timeouts().setScriptTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         break;
       case "REMOTE":
-        DesiredCapabilities capabilities = PredefineCap.REMOTE;
+        DesiredCapabilities capabilities = PredefineCap.getDesiredCapabilities();
         webDriver = new RemoteWebDriver(new URL("http:localhost:4444/wd/hub"),
             capabilities);
         webDriver.manage().timeouts().implicitlyWait(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
