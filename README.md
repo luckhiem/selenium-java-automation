@@ -30,11 +30,11 @@ $ git clone https://github.com/luckhiem/vdc-automation.git
 #### Local
 **For Cucumber Test**
 ```sh
-$ mvn clean -Dtest="RunCucumberTest" test -Denv=[environment] "-Dcucumber.options=--tags \"[tagName]\"" 
+$ mvn clean -Dtest="TestRunner" test -Denv=[environment] "-Dcucumber.options=--tags \"[tagName]\"" 
 ```
 Example:
 ```sh
-$ mvn clean verify -Dtest="RunCucumberTest" -Denv=local -Dcucumber.options="--tags @regression-web" test
+$ mvn clean verify -Dtest="TestRunner" -Denv=local -Dcucumber.options="--tags @test" test
 ```
 
 [tagName] = @ tag name  e.g. @test...
