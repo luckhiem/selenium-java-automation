@@ -187,8 +187,8 @@ softly.assertThat(...)
 ```
 
 Reference links:
-https://joel-costigliola.github.io/assertj/index.html.
-https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#soft-assertions.
++ https://joel-costigliola.github.io/assertj/index.html.
++ https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#soft-assertions.
 
 ### Test Report
 
