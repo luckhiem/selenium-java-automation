@@ -103,10 +103,10 @@ Please use this pattern:
 [Access Modifier] [?static] [ElementType] [ElementName];
 ```
 
-Examples for Web Element: use **Element** type or specific elements as So **TextBox**, **Checkbox**
-, **Table**, **CheckBox** and should be `public static`
+Examples for Web Element: use **Element** type or specific elements as So **TextBox** and should
+be `public static`
 
-```
+```java
 @FindBy(id = "email")
 public static Textbox Email_Textbox;
 ```
@@ -129,16 +129,16 @@ public static Textbox Email_Textbox;
 
 Pattern:
 
- ```
-As a [type of user], I want to [perform some action] so that I [can achieve some goal/result/value].”
+ ```Gherkin
+As a [type of user], I want to [perform some action] so that I [can achieve some goal/result/value].
  ```
 
 Example:
 
-```
-As a user, 
-    I want to be able to recover the password to my account 
-    So that I will be able to access my account in case I forgot the password
+```Gherkin
+As a user,
+I want to be able to recover the password to my account
+So that I will be able to access my account in case I forgot the password
 ```
 
 **Scenario**: the name for the behavior that will be described with following keywords:
@@ -166,7 +166,7 @@ As a user,
 
 Functions of `AssertJ` library are used in verifying steps (`Then`). Static import:
 
-```
+```java
 import static org.assertj.core.api.Assertions.*;
 ```
 
@@ -187,6 +187,7 @@ softly.assertThat(...)
 ```
 
 Reference links:
+
 + https://joel-costigliola.github.io/assertj/index.html.
 + https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#soft-assertions.
 
@@ -197,12 +198,12 @@ in `stepDefinitions.TestRunner`
 
 **In Local:**
 Use lifecycle `verify` instead of `test` to generate test report in
-directory `target/cucumber-html-reports/js/`
+directory `target/cucumber-html-reports/`
 The main report is file `overview-steps.html`
 *Example:* Run this command to execute all scenarios which have tag "@regression" and generate the
 test report:
 
-```
+```sh
 clean verify -Denv=dev "-Dcucumber.options=--tags \"@test\""
 ```
 
